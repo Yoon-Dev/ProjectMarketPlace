@@ -6,8 +6,7 @@ import { makeStyles, createStyles } from '@material-ui/core/styles';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {
-    Link,
-    useLocation
+    Link
   } from "react-router-dom";
 const AppNavigation = props => {
 
@@ -25,15 +24,11 @@ const AppNavigation = props => {
       const self = document.querySelector('#navbar')
       self.style.height = `${self.offsetHeight}px`
     }, []);
-    let url = useLocation() 
     return(
         <div className={"appnavigation"} id="navbar">
             <BottomNavigation className={style.bg}>
-              <BottomNavigationAction  component={Link} to="/" icon={<HomeIcon fontSize={"large"}/>} />
-              <BottomNavigationAction to="/sign" icon={<AccountCircleIcon fontSize={"large"}/>}>
-                <Link data-testid="signlink" />
-            </BottomNavigationAction>
-
+                <BottomNavigationAction  component={Link} to="/" icon={<HomeIcon fontSize={"large"}/>} />
+                <BottomNavigationAction data-testid="signlink" component={Link} to="/sign" icon={<AccountCircleIcon fontSize={"large"}/>} />
             </BottomNavigation>
         </div>
     )

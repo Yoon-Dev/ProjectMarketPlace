@@ -8,9 +8,11 @@ import './App.css';
 import Home from '../home/Home'
 import Sign from '../sign/Sign'
 import AppNavigation from '../appnavigation/AppNavigation'
+import { auth, AutorizationContext } from '../../utils/Autorization.js';
 
 function App() {
   return (
+      <AutorizationContext.Provider value={auth}>
         <Router>
           <AppNavigation/>
           <Switch>
@@ -22,6 +24,7 @@ function App() {
             </Route>
           </Switch>
         </Router>
+      </AutorizationContext.Provider>
   );
 }
 
