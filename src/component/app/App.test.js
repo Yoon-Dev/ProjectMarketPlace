@@ -16,8 +16,8 @@ afterEach( () => {
   container.remove();
 });
 
-async function testClick(el) {
-    await act( () => {
+function testClick(el) {
+    act( () => {
       el.dispatchEvent(
         new MouseEvent("click", { bubbles: true })
       );

@@ -1,23 +1,51 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     withRouter
   } from "react-router-dom";
+import { compose } from 'recompose'
 import { withAutorization } from '../../utils/Autorization.js';
+import Grid from '@material-ui/core/Grid';
+// component
+import Item from '../item/Item'
 
 const Home = props => {
 
-    console.log(props)
+    const [items, setItems] = useState(null);
 
     useEffect(() => {
         if(!props.userName){
             props.history.push("/sign")
+        }else{
+
+            fetch('https://apid2d.pierre-monier.com/src/RealSelect.php')
+                .then(response => response.json())
+                .then(json => {
+                    setItems(createItems(json))
+                })
+                .catch(error => {
+                    alert(error)
+                })
+
         }
     }, [props.userName, props.history]);
 
+// °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+// °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+// create item component
+    const createItems = data => {
+        const items = data.map( item => 
+            <Item key={item.id} id={item.id} nom={item.nom}></Item>  
+        );
+        return items;
+    }
     return(
-
-    <h1>Bienvenue sur le site {props.userName}</h1>
+    <div>
+        <h1>Bienvenue sur le site {props.userName}</h1>
+        <Grid container justify="center" alignItems="center">
+            { items ? items : "loading" }
+        </Grid>     
+    </div>
     );
 }
 
-export default withRouter(withAutorization(Home));
+export default compose(withRouter, withAutorization)(Home);

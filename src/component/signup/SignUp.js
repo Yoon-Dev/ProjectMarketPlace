@@ -3,6 +3,7 @@ import {
   withRouter,
   Link
 } from "react-router-dom";
+import { compose } from 'recompose'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -23,6 +24,7 @@ const SignUp = props => {
       }));
       const style = useStyles();
     
+    const [username, setUsername] = useState(null);
     const [email, setEmail] = useState(null);
     const [pass, setPass] = useState(null);
 
@@ -37,6 +39,9 @@ const SignUp = props => {
             case 'pass':
                 setPass(value)
                 break;
+            case 'username':
+                setUsername(value)
+                break;
             default:
                 break;
         }
@@ -44,8 +49,9 @@ const SignUp = props => {
     
     const handleSubmit = () => {
 
-        alert(email, pass)
-        if(email && pass){
+       
+        if(email && pass && username){
+            alert(`vous avez creer un compte avec pour mail ${email} pour username ${username} et pour password ${pass}`)
             props.history.push("/sign")
         }
         
@@ -55,6 +61,9 @@ const SignUp = props => {
     return(
 
         <Grid container justify="center" alignItems="center" className={style.mb}>
+            <Grid item xs={12} className={style.center}> 
+                <TextField label="username" name="username" onChange={handleChange}/>
+            </Grid>
             <Grid item xs={12} className={style.center}> 
                 <TextField label="email"  name="email" onChange={handleChange}/>
             </Grid>
@@ -74,4 +83,4 @@ const SignUp = props => {
     );
 }
 
-export default withRouter((SignUp));
+export default compose(withRouter)(SignUp);

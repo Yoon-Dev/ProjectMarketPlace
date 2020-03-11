@@ -8,7 +8,9 @@ export class Autorization extends React.Component{
                 isLogged: false,
                 toLogin: () => {this.setState({isLogged: !this.state.isLogged})},
                 userName: null,
-                setUserName: username => {this.setState({userName: username})}
+                setUserName: username => {this.setState({userName: username})},
+                nbr_article: 0,
+                setNbr_article: () => {this.setState({nbr_article: this.state.nbr_article+1})}
             }
         }    
 

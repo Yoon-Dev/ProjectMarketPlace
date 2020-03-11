@@ -13,6 +13,7 @@ import { Autorization } from '../../utils/Autorization.js';
 
 function App() {
   return (
+    <div id="App">
       <Autorization>
         <Router>
           <AppNavigation/>
@@ -29,6 +30,7 @@ function App() {
           </Switch>
         </Router>
       </Autorization>
+    </div>
   );
 }
 

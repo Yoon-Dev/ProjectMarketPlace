@@ -8,6 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { compose } from 'recompose'
 
 const Sign = props => {
    
@@ -24,7 +25,7 @@ const Sign = props => {
       }));
       const style = useStyles();
 
-    const [email, setEmail] = useState(null);
+    const [identifiant, setIdentifiant] = useState(null);
     const [pass, setPass] = useState(null);
 
     const handleChange = e => {
@@ -32,8 +33,8 @@ const Sign = props => {
         const name = e.currentTarget.name
         const value = e.currentTarget.value
         switch(name){
-            case 'email':
-                setEmail(value)
+            case 'identifiant':
+                setIdentifiant(value)
                 break;
             case 'pass':
                 setPass(value)
@@ -47,9 +48,9 @@ const Sign = props => {
     const handleSubmit = logout =>{
         if(!logout){
             // je me connnecte
-            if(email === "bru" && pass === "pass"){
+            if((identifiant === "bru" || identifiant === "bru@gmail.com") && pass === "pass"){
                 props.toLogin()
-                props.setUserName(email)
+                props.setUserName(identifiant)
                 props.history.push("/")
             }else{
                 alert("Un intru")
@@ -69,13 +70,13 @@ const Sign = props => {
         { props.isLogged ?
             <Grid item xs={12} className={style.center}>
                 <Button variant="contained" color="secondary" onClick={() => handleSubmit(true)}>
-                    SignUp
+                    Log Out
                 </Button>
             </Grid>
             :
             <div>
                 <Grid item xs={12} className={style.center}> 
-                    <TextField label="email"  name="email" onChange={handleChange}/>
+                    <TextField label="username ou email"  name="identifiant" onChange={handleChange}/>
                 </Grid>
                 <Grid item xs={12} className={style.center}> 
                     <TextField label="password"  name="pass" type="password" onChange={handleChange}/>
@@ -95,4 +96,4 @@ const Sign = props => {
     );
 }
 
-export default withRouter(withAutorization(Sign));
+export default compose(withRouter, withAutorization)(Sign)
