@@ -5,9 +5,8 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import HomeIcon from '@material-ui/icons/Home';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { compose } from 'recompose'
-import Button from '@material-ui/core/Button';
-
 import {
     Link
   } from "react-router-dom";
@@ -30,15 +29,11 @@ const AppNavigation = props => {
     }, []);
     return(
         <div className={"appnavigation"} id="navbar">
-            <BottomNavigation className={style.bg}>
+            <BottomNavigation className={style.bg} showLabels>
                 <BottomNavigationAction  component={Link} to="/" icon={<HomeIcon fontSize={"large"}/>} />
                 <BottomNavigationAction data-testid="signlink" component={Link} to="/sign" icon={<AccountCircleIcon fontSize={"large"}/>} />
                 { props.isLogged ? 
-                <BottomNavigationAction data-testid="signlink" to="/sign" >} >
-                  <Button variant="contained" color="secondary" >
-                    {props.nbr_article}  
-                  </Button>
-                </BottomNavigationAction>
+                <BottomNavigationAction component={Link} to="/shopping-cart" label={props.nbr_article} icon={<ShoppingCartIcon fontSize={"large"}/>} />
                 : null
                 }
             </BottomNavigation>

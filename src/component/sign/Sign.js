@@ -58,6 +58,7 @@ const Sign = props => {
         }else{
             // je me deconnecte
             props.toLogin()
+            props.setUserName(null)
         }
 
         
@@ -69,7 +70,7 @@ const Sign = props => {
         <Grid container justify="center" alignItems="center" className={style.mb}>
         { props.isLogged ?
             <Grid item xs={12} className={style.center}>
-                <Button variant="contained" color="secondary" onClick={() => handleSubmit(true)}>
+                <Button variant="contained" color="primary" onClick={() => handleSubmit(true)}>
                     Log Out
                 </Button>
             </Grid>
@@ -82,8 +83,8 @@ const Sign = props => {
                     <TextField label="password"  name="pass" type="password" onChange={handleChange}/>
                 </Grid>
                 <Grid item xs={12} className={style.center}> 
-                    <Button variant="contained" color="secondary" onClick={() =>handleSubmit(false)}>
-                        Envoyer
+                    <Button variant="contained" color="primary" onClick={() =>handleSubmit(false)}>
+                        s'identifier
                     </Button>
                 </Grid>
             </div>

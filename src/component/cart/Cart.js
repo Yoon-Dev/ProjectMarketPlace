@@ -5,10 +5,11 @@ import {
 import { compose } from 'recompose'
 import { withAutorization } from '../../utils/Autorization.js';
 import Grid from '@material-ui/core/Grid';
+import './Cart.css';
 // component
 import Item from '../item/Item'
 
-const Home = props => {
+const Cart = props => {
 
     const [items, setItems] = useState(null);
 
@@ -25,7 +26,6 @@ const Home = props => {
                 .catch(error => {
                     alert(error)
                 })
-
         }
     }, [props.userName, props.history]);
 
@@ -33,14 +33,18 @@ const Home = props => {
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 // create item component
     const createItems = data => {
-        const items = data.map( item => 
-            <Item key={item.id} id={item.id} nom={item.nom}></Item>  
+        const data_filtered = data.filter(el => props.determinePurchased(el.id))
+        const items = data_filtered.map( item => 
+                <Item key={item.id} id={item.id} nom={item.nom}></Item> 
         );
+        if(items.length === 0){
+            items.push(<img key="1" className="empty" src="https://media.giphy.com/media/6uGhT1O4sxpi8/source.gif" alt="empty"/>)
+        }
         return items;
     }
     return(
     <div>
-        <h1>Bienvenue {props.userName}, faite de bonne course</h1>
+        <h1>{props.userName}, voici ce que vous avez acheté</h1>
         <Grid container justify="center" alignItems="center">
             { items ? items : "loading" }
         </Grid>     
@@ -48,4 +52,4 @@ const Home = props => {
     );
 }
 
-export default compose(withRouter, withAutorization)(Home);
+export default compose(withRouter, withAutorization)(Cart);

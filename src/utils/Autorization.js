@@ -10,7 +10,19 @@ export class Autorization extends React.Component{
                 userName: null,
                 setUserName: username => {this.setState({userName: username})},
                 nbr_article: 0,
-                setNbr_article: () => {this.setState({nbr_article: this.state.nbr_article+1})}
+                setNbr_article: nbr => {this.setState({nbr_article: nbr})},
+                tab_purchased_article: [],
+                setPurchased_article: x => {this.state.tab_purchased_article.push(x)},
+                removePurchased_article: x => {this.state.tab_purchased_article.splice(x, 1)},
+                determinePurchased: id => {
+                    let isPurchased = false
+                    this.state.tab_purchased_article.forEach(el => {
+                        if(id === el){               
+                            isPurchased = true
+                        }
+                    })
+                    return isPurchased;
+                } 
             }
         }    
 

@@ -8,6 +8,7 @@ import './App.css';
 import Home from '../home/Home'
 import Sign from '../sign/Sign'
 import SignUp from '../signup/SignUp'
+import Cart from '../cart/Cart'
 import AppNavigation from '../appnavigation/AppNavigation'
 import { Autorization } from '../../utils/Autorization.js';
 
@@ -26,6 +27,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <SignUp />
+            </Route>
+            <Route path="/shopping-cart">
+              <Cart />
             </Route>
           </Switch>
         </Router>

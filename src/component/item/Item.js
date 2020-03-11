@@ -1,13 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import DeleteIcon from '@material-ui/icons/Delete';
 import './Item.css'
 import { compose } from 'recompose'
 import { withAutorization } from '../../utils/Autorization';
 
 const Item = props => {
 
+    
     const useStyles = makeStyles( () => createStyles({
         center: {
             display: "flex",
@@ -26,22 +29,33 @@ const Item = props => {
 
       }));
     const style = useStyles();
+
+    const [purchased, setPurchased] = useState(props.determinePurchased(props.id));
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° 
-// set hammerjs event 
-    useEffect(() => {
-        console.log("Mount")
-
-    });
+      useEffect(() => {
+        const self = document.getElementById(props.id)
+          if(purchased){
+            self.firstChild.style.background = "url('https://media.giphy.com/media/l0OXXpl20sY9G0uJy/source.gif')";
+          }
+      }, [purchased, props.id]);
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° 
 // send a request to delete the ressouce in BDD
     const handleSubmit = () => {
         const self = document.getElementById(props.id)
-        self.style.backgroundColor = "green";
-        props.setNbr_article()
-        // props.
-        // add item
+        if(purchased){
+            // remove
+            // props.setPurchased_article(props.id)
+            props.removePurchased_article(props.tab_purchased_article.indexOf(props.id))
+            props.setNbr_article(props.nbr_article -1)
+            self.firstChild.style.background = "white";
+        }else{
+            props.setPurchased_article(props.id)
+            props.setNbr_article(props.nbr_article + 1)
+            self.firstChild.style.background = "url('https://media.giphy.com/media/l0OXXpl20sY9G0uJy/source.gif')";
+        }
+        setPurchased(!purchased)
     }
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° 
@@ -56,8 +70,8 @@ const Item = props => {
                     <img src="https://upload.wikimedia.org/wikipedia/en/4/46/IMG_Academy_Logo.jpg" alt="product" className={style.img}/>
                 </Grid>
                 <Grid item xs={12} className={style.center}> 
-                    <Button variant="contained" color="secondary" className={style.el} onClick={handleSubmit}>
-                        Acheter
+                    <Button variant="contained" color={ purchased ? "secondary" : "primary" } startIcon={ purchased ? <DeleteIcon /> : <AddCircleIcon/>}className={style.el} onClick={handleSubmit}>
+                        { purchased ? "Enlever du panier" : "Acheter" }
                     </Button>
                 </Grid>
             </Grid>
