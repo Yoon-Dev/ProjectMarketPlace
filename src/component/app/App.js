@@ -7,12 +7,13 @@ import {
 import './App.css';
 import Home from '../home/Home'
 import Sign from '../sign/Sign'
+import SignUp from '../signup/SignUp'
 import AppNavigation from '../appnavigation/AppNavigation'
-import { auth, AutorizationContext } from '../../utils/Autorization.js';
+import { Autorization } from '../../utils/Autorization.js';
 
 function App() {
   return (
-      <AutorizationContext.Provider value={auth}>
+      <Autorization>
         <Router>
           <AppNavigation/>
           <Switch>
@@ -22,9 +23,12 @@ function App() {
             <Route path="/sign">
               <Sign />
             </Route>
+            <Route path="/signup">
+              <SignUp />
+            </Route>
           </Switch>
         </Router>
-      </AutorizationContext.Provider>
+      </Autorization>
   );
 }
 

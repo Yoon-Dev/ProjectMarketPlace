@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import {
+    withRouter
+  } from "react-router-dom";
+import { withAutorization } from '../../utils/Autorization.js';
 
-const Home = () => {
+const Home = props => {
+
+    console.log(props)
+
+    useEffect(() => {
+        if(!props.userName){
+            props.history.push("/sign")
+        }
+    }, [props.userName, props.history]);
+
     return(
-        <h1>Home</h1>
+
+    <h1>Bienvenue sur le site {props.userName}</h1>
     );
 }
 
-export default Home;
+export default withRouter(withAutorization(Home));
