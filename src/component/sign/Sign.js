@@ -66,7 +66,7 @@ const Sign = props => {
     
     return(
 
-        <Grid container justify="center" alignItems="center" className={style.mb}>
+        <Grid container justify="center" alignItems="center" className={style.mb} data-testid="signcomponent">
         { props.isLogged ?
             <Grid item xs={12} className={style.center}>
                 <Button data-testid="logout-btn" variant="contained" color="primary" onClick={() => handleSubmit(true)}>

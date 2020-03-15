@@ -40,7 +40,7 @@ const Home = props => {
         return items;
     }
     return(
-    <div>
+    <div data-testid="homecomponent">
         <h1>Bienvenue {props.userName}, faite de bonne course</h1>
         <Grid container justify="center" alignItems="center">
             { items ? items : "loading" }

@@ -46,7 +46,7 @@ const Cart = props => {
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 // create item component
     return(
-    <div>
+    <div data-testid="cartcomponent"> 
         <h1>{props.userName}, voici ce que vous avez acheté</h1>
         <Grid container justify="center" alignItems="center">
             { items ? items : "loading" }
