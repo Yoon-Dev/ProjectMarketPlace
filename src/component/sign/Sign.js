@@ -19,7 +19,7 @@ const Sign = props => {
             marginBottom: "1.33em"
         },
         mb:{
-            marginTop: "2em"
+            paddingTop: "5em"
         }
 
       }));
@@ -75,17 +75,19 @@ const Sign = props => {
             </Grid>
             :
             <div>
-                <Grid item xs={12} className={style.center}> 
-                    <TextField label="username ou email"  name="identifiant" onChange={handleChange}/>
-                </Grid>
-                <Grid item xs={12} className={style.center}> 
-                    <TextField label="password"  name="pass" type="password" onChange={handleChange}/>
-                </Grid>
-                <Grid item xs={12} className={style.center}> 
-                    <Button variant="contained" color="primary" onClick={() =>handleSubmit(false)} data-testid='btn-sign'>
-                        s'identifier
-                    </Button>
-                </Grid>
+                <form>
+                    <Grid item xs={12} className={style.center}> 
+                        <TextField label="username ou email"  name="identifiant" onChange={handleChange}/>
+                    </Grid>
+                    <Grid item xs={12} className={style.center}> 
+                        <TextField label="password"  name="pass" autoComplete="password" type="password" onChange={handleChange}/>
+                    </Grid>
+                    <Grid item xs={12} className={style.center}> 
+                        <Button variant="contained" color="primary" onClick={() =>handleSubmit(false)} data-testid='btn-sign'>
+                            s'identifier
+                        </Button>
+                    </Grid>
+                </form>         
             </div>
         } 
             <Grid item xs={12} className={style.center}> 

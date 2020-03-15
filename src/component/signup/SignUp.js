@@ -19,7 +19,7 @@ const SignUp = props => {
             marginBottom: "1.33em"
         },
         mb:{
-            marginTop: "2em"
+            paddingTop: "5em"
         }
 
       }));
@@ -61,27 +61,27 @@ const SignUp = props => {
     
     
     return(
-
-        <Grid container justify="center" alignItems="center" className={style.mb}>
-            <Grid item xs={12} className={style.center}> 
-                <TextField label="username" name="username" onChange={handleChange}/>
+        <form>
+            <Grid container justify="center" alignItems="center" className={style.mb}>
+                <Grid item xs={12} className={style.center}> 
+                    <TextField label="username" name="username" onChange={handleChange}/>
+                </Grid>
+                <Grid item xs={12} className={style.center}> 
+                    <TextField label="email"  name="email" onChange={handleChange}/>
+                </Grid>
+                <Grid item xs={12} className={style.center}> 
+                    <TextField label="password" autoComplete="password" type="password" name="pass" onChange={handleChange}/>
+                </Grid>
+                <Grid item xs={12} className={style.center}> 
+                    <Button data-testid="signup-btn" variant="contained" color="primary" onClick={() =>handleSubmit()}>
+                        SignUp
+                    </Button>
+                </Grid>
+                <Grid item xs={12} className={style.center}> 
+                    <Link to={"/sign"}>Se connecter</Link> 
+                </Grid>
             </Grid>
-            <Grid item xs={12} className={style.center}> 
-                <TextField label="email"  name="email" onChange={handleChange}/>
-            </Grid>
-            <Grid item xs={12} className={style.center}> 
-                <TextField label="password" name="pass" onChange={handleChange}/>
-            </Grid>
-            <Grid item xs={12} className={style.center}> 
-                <Button data-testid="signup-btn" variant="contained" color="primary" onClick={() =>handleSubmit()}>
-                    SignUp
-                </Button>
-            </Grid>
-            <Grid item xs={12} className={style.center}> 
-                <Link to={"/sign"}>Se connecter</Link> 
-            </Grid>
-        </Grid>
-
+        </form>
     );
 }
 

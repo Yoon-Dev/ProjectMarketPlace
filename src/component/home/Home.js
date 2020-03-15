@@ -16,18 +16,16 @@ const Home = props => {
         if(!props.userName){
             props.history.push("/sign")
         }else{
-            if(2+2 === 4){
-                fetch('https://apid2d.pierre-monier.com/src/OnlineSelect.php')
-                .then(response => response.json())
-                .then(json => {
-                    setItems(createItems(json))
-                })
-                .catch(error => {
-                    alert(error)
-                })
-            }
-
+            fetch('https://apid2d.pierre-monier.com/src/OnlineSelect.php')
+            .then(response => response.json())
+            .then(json => {
+                setItems(createItems(json))
+            })
+            .catch(error => {
+                alert(error)
+            })
         }
+        // eslint-disable-next-line
     }, []);
 
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
@@ -40,7 +38,7 @@ const Home = props => {
         return items;
     }
     return(
-    <div data-testid="homecomponent">
+    <div data-testid="homecomponent" className="mb">
         <h1 data-testid="title">Bienvenue {props.userName}, faite de bonne course</h1>
         <Grid container justify="center" alignItems="center">
             { items ? items : "loading" }

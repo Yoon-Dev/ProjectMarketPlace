@@ -53,14 +53,14 @@ const Item = props => {
         }else{
             props.setPurchased_article(props.id)
             props.setNbr_article(props.nbr_article + 1)
-            self.firstChild.style.background = "url('https://media.giphy.com/media/l0OXXpl20sY9G0uJy/source.gif')";
+            self.firstChild.style.backgroundImage = "url('https://media.giphy.com/media/l0OXXpl20sY9G0uJy/source.gif')";
         }
         setPurchased(!purchased)
     }
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° 
     return(
-    <Grid data-testid="item-id" id={props.id} className={style.center} item xs={6} data-testclass="item">
+    <Grid data-testid="item-id" id={props.id} className={style.center} item xs={3} data-testclass="item">
         <div className="card">
             <Grid container justify="center" alignItems="center" className={style.mb}>
                 <Grid item xs={12} className={style.center}> 
