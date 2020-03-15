@@ -22,7 +22,22 @@ export class Autorization extends React.Component{
                         }
                     })
                     return isPurchased;
-                } 
+                },
+                users: [{username: 'bru', passwd: 'pass', email: 'bru@gmail.com'}],
+                setUsers: newuser => {this.state.users.push(newuser)},
+                checkUser: (identifiant, pass, type) => {
+                    let res = null
+                    this.state.users.forEach((el, i) => {          
+                        if((identifiant === el.username || el.email) && pass === el.passwd){
+                            if(type === 'check'){
+                                res = true
+                            }else{
+                                res = i
+                            }   
+                        }
+                    })
+                    return res;
+                },
             }
         }    
 

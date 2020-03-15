@@ -48,9 +48,9 @@ const Sign = props => {
     const handleSubmit = logout =>{
         if(!logout){
             // je me connnecte
-            if((identifiant === "bru" || identifiant === "bru@gmail.com") && pass === "pass"){
+            if(props.checkUser(identifiant, pass, 'check')){
                 props.toLogin()
-                props.setUserName(identifiant)
+                props.setUserName(props.users[props.checkUser(identifiant, pass, 'i')].username)
                 props.history.push("/")
             }else{
                 alert("Un intru")

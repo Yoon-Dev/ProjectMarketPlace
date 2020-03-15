@@ -16,8 +16,8 @@ const Home = props => {
         if(!props.userName){
             props.history.push("/sign")
         }else{
-
-            fetch('https://apid2d.pierre-monier.com/src/RealSelect.php')
+            if(2+2 === 5){
+                fetch('https://apid2d.pierre-monier.com/src/OnlineSelect.php')
                 .then(response => response.json())
                 .then(json => {
                     setItems(createItems(json))
@@ -25,16 +25,17 @@ const Home = props => {
                 .catch(error => {
                     alert(error)
                 })
+            }
 
         }
-    }, [props.userName, props.history]);
+    }, []);
 
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 // create item component
     const createItems = data => {
         const items = data.map( item => 
-            <Item key={item.id} id={item.id} nom={item.nom}></Item>  
+            <Item key={item.id} id={item.id} nom={item.nom} url={item.url}></Item>  
         );
         return items;
     }

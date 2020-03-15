@@ -4,6 +4,7 @@ import {
   Link
 } from "react-router-dom";
 import { compose } from 'recompose'
+import { withAutorization } from '../../utils/Autorization.js';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -51,7 +52,8 @@ const SignUp = props => {
 
        
         if(email && pass && username){
-            alert(`vous avez creer un compte avec pour mail ${email} pour username ${username} et pour password ${pass}`)
+            let newuser = {username : username, passwd: pass, email: email}
+            props.setUsers(newuser)
             props.history.push("/sign")
         }
         
@@ -83,4 +85,4 @@ const SignUp = props => {
     );
 }
 
-export default compose(withRouter)(SignUp);
+export default compose(withRouter, withAutorization)(SignUp);

@@ -67,7 +67,7 @@ const Item = props => {
                     <h4 className={style.el}>{props.nom}</h4> 
                 </Grid>
                 <Grid item xs={12} className={style.center}> 
-                    <img src="https://upload.wikimedia.org/wikipedia/en/4/46/IMG_Academy_Logo.jpg" alt="product" className={style.img}/>
+                    <img src={props.url} alt="product" className={style.img}/>
                 </Grid>
                 <Grid item xs={12} className={style.center}> 
                     <Button variant="contained" color={ purchased ? "secondary" : "primary" } startIcon={ purchased ? <DeleteIcon /> : <AddCircleIcon/>}className={style.el} onClick={handleSubmit}>
