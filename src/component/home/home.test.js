@@ -19,18 +19,14 @@ afterEach( () => {
 
 
 
-test("it render item on api calls pretty fast", () => {
+test("it render a custom title", () => {
   
   act(() => {
       render(<App></App>, container);
   });
   singIn()
   testClick(document.querySelector("[data-testid='homelink']"))
-  setTimeout(() => {
-      const btnitems = document.querySelectorAll("[data-testclass='btn-items']")
-      console.log(btnitems.length, 'BRU')
-      expect(2+2).toBe(5)
-
-  }, 2000);
-
+  const title = document.querySelector("[data-testid='title']")
+  expect(title.innerHTML).toBe("Bienvenue bru, faite de bonne course")
+  
 });

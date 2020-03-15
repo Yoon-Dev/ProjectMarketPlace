@@ -35,13 +35,13 @@ const Home = props => {
 // create item component
     const createItems = data => {
         const items = data.map( item => 
-            <Item key={item.id} id={item.id} nom={item.nom} url={item.url}></Item>  
+            <Item key={item.id} id={item.id} nom={item.nom} url={item.url} />  
         );
         return items;
     }
     return(
     <div data-testid="homecomponent">
-        <h1>Bienvenue {props.userName}, faite de bonne course</h1>
+        <h1 data-testid="title">Bienvenue {props.userName}, faite de bonne course</h1>
         <Grid container justify="center" alignItems="center">
             { items ? items : "loading" }
         </Grid>     

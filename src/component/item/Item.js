@@ -60,14 +60,14 @@ const Item = props => {
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 // °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° 
     return(
-    <Grid id={props.id} className={style.center} item xs={6}>
+    <Grid data-testid="item-id" id={props.id} className={style.center} item xs={6} data-testclass="item">
         <div className="card">
             <Grid container justify="center" alignItems="center" className={style.mb}>
                 <Grid item xs={12} className={style.center}> 
-                    <h4 className={style.el}>{props.nom}</h4> 
+                    <h4 data-testid="item-name" className={style.el}>{props.nom}</h4> 
                 </Grid>
                 <Grid item xs={12} className={style.center}> 
-                    <img src={props.url} alt="product" className={style.img}/>
+                    <img data-testid="item-img" src={props.url} alt="product" className={style.img}/>
                 </Grid>
                 <Grid item xs={12} className={style.center}> 
                     <Button variant="contained" color={ purchased ? "secondary" : "primary" } data-testclass="btn-items" startIcon={ purchased ? <DeleteIcon /> : <AddCircleIcon/>}className={style.el} onClick={handleSubmit}>

@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+exports[`it match snapshot 1`] = `
+<div
+  className="MuiGrid-root makeStyles-center-159 MuiGrid-item MuiGrid-grid-xs-6"
+  data-testclass="item"
+  data-testid="item-id"
+  id={1}
+>
+  <div
+    className="card"
+  >
+    <div
+      className="MuiGrid-root makeStyles-mb-160 MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
+    >
+      <div
+        className="MuiGrid-root makeStyles-center-159 MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <h4
+          className="makeStyles-el-161"
+          data-testid="item-name"
+        >
+          item test
+        </h4>
+      </div>
+      <div
+        className="MuiGrid-root makeStyles-center-159 MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <img
+          alt="product"
+          className="makeStyles-img-162"
+          data-testid="item-img"
+          src="https://jestjs.io/docs/en/tutorial-react"
+        />
+      </div>
+      <div
+        className="MuiGrid-root makeStyles-center-159 MuiGrid-item MuiGrid-grid-xs-12"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-el-161 MuiButton-containedPrimary"
+          data-testclass="btn-items"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            <span
+              className="MuiButton-startIcon MuiButton-iconSizeMedium"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"
+                />
+              </svg>
+            </span>
+            Acheter
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
