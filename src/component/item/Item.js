@@ -70,7 +70,7 @@ const Item = props => {
                     <img src={props.url} alt="product" className={style.img}/>
                 </Grid>
                 <Grid item xs={12} className={style.center}> 
-                    <Button variant="contained" color={ purchased ? "secondary" : "primary" } startIcon={ purchased ? <DeleteIcon /> : <AddCircleIcon/>}className={style.el} onClick={handleSubmit}>
+                    <Button variant="contained" color={ purchased ? "secondary" : "primary" } data-testclass="btn-items" startIcon={ purchased ? <DeleteIcon /> : <AddCircleIcon/>}className={style.el} onClick={handleSubmit}>
                         { purchased ? "Enlever du panier" : "Acheter" }
                     </Button>
                 </Grid>

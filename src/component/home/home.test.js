@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import { testClick, singIn } from '../../utils/test.js';
-import App from './App';
+import App from '../app/App';
 
 let container = null;
 
@@ -19,25 +19,18 @@ afterEach( () => {
 
 
 
-test("it render sign component when clicked on homelink and the url is /signin", () => {
-  
-  act(() => {
-      render(<App></App>, container);
-  });
-  const homelink = document.querySelector("[data-testid='homelink']")
-  expect(window.location.pathname).toBe('/sign')
-  testClick(homelink)
-  expect(window.location.pathname).toBe('/sign')
-
-});
-
-test("it redirect to home when sign in", () => {
+test("it render item on api calls pretty fast", () => {
   
   act(() => {
       render(<App></App>, container);
   });
   singIn()
-  expect(window.location.pathname).toBe('/')
+  testClick(document.querySelector("[data-testid='homelink']"))
+  setTimeout(() => {
+      const btnitems = document.querySelectorAll("[data-testclass='btn-items']")
+      console.log(btnitems.length, 'BRU')
+      expect(2+2).toBe(5)
 
-  
+  }, 2000);
+
 });

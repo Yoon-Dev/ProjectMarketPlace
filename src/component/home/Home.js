@@ -16,7 +16,7 @@ const Home = props => {
         if(!props.userName){
             props.history.push("/sign")
         }else{
-            if(2+2 === 5){
+            if(2+2 === 4){
                 fetch('https://apid2d.pierre-monier.com/src/OnlineSelect.php')
                 .then(response => response.json())
                 .then(json => {

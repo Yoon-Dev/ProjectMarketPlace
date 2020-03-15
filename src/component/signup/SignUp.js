@@ -73,7 +73,7 @@ const SignUp = props => {
                 <TextField label="password" name="pass" onChange={handleChange}/>
             </Grid>
             <Grid item xs={12} className={style.center}> 
-                <Button variant="contained" color="primary" onClick={() =>handleSubmit()}>
+                <Button data-testid="signup-btn" variant="contained" color="primary" onClick={() =>handleSubmit()}>
                     SignUp
                 </Button>
             </Grid>

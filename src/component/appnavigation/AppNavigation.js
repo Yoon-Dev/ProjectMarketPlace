@@ -30,10 +30,10 @@ const AppNavigation = props => {
     return(
         <div className={"appnavigation"} id="navbar">
             <BottomNavigation className={style.bg} showLabels>
-                <BottomNavigationAction  component={Link} to="/" icon={<HomeIcon fontSize={"large"}/>} />
-                <BottomNavigationAction data-testid="signlink" component={Link} to="/sign" icon={<AccountCircleIcon fontSize={"large"}/>} />
+                <BottomNavigationAction data-testclass="icon-navbar" data-testid="homelink" component={Link} to="/" icon={<HomeIcon fontSize={"large"}/>} />
+                <BottomNavigationAction data-testclass="icon-navbar" data-testid="signlink" component={Link} to="/sign" icon={<AccountCircleIcon fontSize={"large"}/>} />
                 { props.isLogged ? 
-                <BottomNavigationAction component={Link} to="/shopping-cart" label={props.nbr_article} icon={<ShoppingCartIcon fontSize={"large"}/>} />
+                <BottomNavigationAction data-testclass="icon-navbar" data-testid="cartlink"  component={Link} to="/shopping-cart" label={props.nbr_article} icon={<ShoppingCartIcon fontSize={"large"}/>} />
                 : null
                 }
             </BottomNavigation>

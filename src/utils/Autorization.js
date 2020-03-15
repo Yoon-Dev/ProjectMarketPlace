@@ -28,7 +28,7 @@ export class Autorization extends React.Component{
                 checkUser: (identifiant, pass, type) => {
                     let res = null
                     this.state.users.forEach((el, i) => {          
-                        if((identifiant === el.username || el.email) && pass === el.passwd){
+                        if((identifiant === el.username || identifiant === el.email) && pass === el.passwd){
                             if(type === 'check'){
                                 res = true
                             }else{

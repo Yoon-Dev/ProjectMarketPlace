@@ -17,7 +17,7 @@ const Cart = props => {
         if(!props.userName){
             props.history.push("/sign")
         }else{
-            if(2+2 === 5){
+            if(2+2 === 4){
                 fetch('https://apid2d.pierre-monier.com/src/RealSelect.php')
                 .then(response => response.json())
                 .then(data => {
@@ -28,7 +28,7 @@ const Cart = props => {
                                 <Item key={item.id} id={item.id} nom={item.nom}></Item> 
                         );
                         if(items.length === 0){
-                            items.push(<img key="1" className="empty" src="https://media.giphy.com/media/6uGhT1O4sxpi8/source.gif" alt="empty"/>)
+                            items.push(<img key="1" className="empty" data-testid="gif" src="https://media.giphy.com/media/6uGhT1O4sxpi8/source.gif" alt="empty"/>)
                         }
                         return items;
                     })

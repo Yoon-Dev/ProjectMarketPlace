@@ -29,7 +29,6 @@ const Sign = props => {
     const [pass, setPass] = useState(null);
 
     const handleChange = e => {
-        
         const name = e.currentTarget.name
         const value = e.currentTarget.value
         switch(name){
@@ -70,7 +69,7 @@ const Sign = props => {
         <Grid container justify="center" alignItems="center" className={style.mb}>
         { props.isLogged ?
             <Grid item xs={12} className={style.center}>
-                <Button variant="contained" color="primary" onClick={() => handleSubmit(true)}>
+                <Button data-testid="logout-btn" variant="contained" color="primary" onClick={() => handleSubmit(true)}>
                     Log Out
                 </Button>
             </Grid>
@@ -83,14 +82,14 @@ const Sign = props => {
                     <TextField label="password"  name="pass" type="password" onChange={handleChange}/>
                 </Grid>
                 <Grid item xs={12} className={style.center}> 
-                    <Button variant="contained" color="primary" onClick={() =>handleSubmit(false)}>
+                    <Button variant="contained" color="primary" onClick={() =>handleSubmit(false)} data-testid='btn-sign'>
                         s'identifier
                     </Button>
                 </Grid>
             </div>
         } 
             <Grid item xs={12} className={style.center}> 
-                <Link to={"/signup"}>Créer un compte</Link> 
+                <Link data-testid="signup" to={"/signup"}>Créer un compte</Link> 
             </Grid>
         </Grid>
 
